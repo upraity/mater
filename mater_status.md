@@ -25,15 +25,18 @@
 -  divisors
 -  is_amicables
 -  quadratic_roots
+-  akermann
 
 ## Current Classes
-- Square
-- Rectangle
-- Circle
+-  Square
+-  Rectangle
+-  Circle
+-  SemiCircle
 
 ## Planned Additions
-- fibonacci (Genratros)
-- akermann (Function)
+-  lcm (function)
+-  gcd (function)
 
 ## Work in Progress
+- ceil (function)
 - Matrix (class)
