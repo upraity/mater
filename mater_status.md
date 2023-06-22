@@ -32,11 +32,14 @@
 -  Rectangle
 -  Circle
 -  SemiCircle
+-  Matrix
 
 ## Planned Additions
+-  transpose (function)
 -  lcm (function)
 -  gcd (function)
 
 ## Work in Progress
-- ceil (function)
-- Matrix (class)
+-  ceil (function)
+-  determinent (function)
+-  Triangle (class)
