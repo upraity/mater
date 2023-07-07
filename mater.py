@@ -157,6 +157,26 @@ def ackermann(m: int, n: int) -> int:
         return ackermann(m - 1, 1)
     return ackermann(m - 1, ackermann(m, n - 1))
 
+def gcd(a: int, b:int) -> int:
+    """Return GCD of given two numbers"""
+    while a and b:
+        a, b = b % a, a
+    return b
+
+def lcm(a: int,b: int) -> int:
+    """Retuurn LCM of given two numbers"""
+    if a % 2 and b % 2:
+        return 1
+    m = 2
+    while a == 1 and b == 1:
+        if a % m == 0:
+            a //= m
+        if b % m == 0:
+            b //= m
+        if a % m and b % m:
+            m += 1
+    return m
+
 
 #Classes
 

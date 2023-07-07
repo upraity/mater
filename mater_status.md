@@ -26,6 +26,8 @@
 -  is_amicables
 -  quadratic_roots
 -  akermann
+-  gcd
+-  lcm
 
 ## Current Classes
 -  Square
@@ -36,10 +38,10 @@
 
 ## Planned Additions
 -  transpose (function)
--  lcm (function)
--  gcd (function)
+-  NullMatrix (function)
 
 ## Work in Progress
 -  ceil (function)
 -  determinent (function)
 -  Triangle (class)
+-  log (function)
