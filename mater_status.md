@@ -35,6 +35,7 @@
 -  Circle
 -  SemiCircle
 -  Matrix
+-  Cube
 
 ## Planned Additions
 -  transpose (function)

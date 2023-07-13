@@ -3,6 +3,14 @@
 #A math librery..
 #Always in devlopment...
 
+"""
+This file will be  replaced with an __init__.py file
+So the new functions and classes are not directly written in this file
+they are imported from their saprated files
+"""
+
+from classes.Cube import Cube
+
 
 def is_prime(num: int) -> bool:
     """Return the num is prime or not"""
