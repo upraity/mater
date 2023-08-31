@@ -28,6 +28,7 @@
 -  akermann
 -  gcd
 -  lcm
+-  fibonacci
 
 ## Current Classes
 -  Square
@@ -36,6 +37,7 @@
 -  SemiCircle
 -  Matrix
 -  Cube
+-  Triangle
 
 ## Planned Additions
 -  transpose (function)
@@ -44,5 +46,4 @@
 ## Work in Progress
 -  ceil (function)
 -  determinent (function)
--  Triangle (class)
 -  log (function)

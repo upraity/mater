@@ -10,7 +10,8 @@ they are imported from their saprated files
 """
 
 from classes.Cube import Cube
-
+from classes.Triangle import Triangle
+from classes.Matrix import Matrix
 
 def is_prime(num: int) -> bool:
     """Return the num is prime or not"""
@@ -185,6 +186,18 @@ def lcm(a: int,b: int) -> int:
             m += 1
     return m
 
+def fibonacci(n: int) -> list[int]:
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    fib_sequence = [0, 1]
+    for _ in range(2, n):
+        next_fib = fib_sequence[-1] + fib_sequence[-2]
+        fib_sequence.append(next_fib)
+    return fib_sequence
 
 #Classes
 
@@ -366,127 +379,4 @@ class SemiCircle:
     
     def __ge__(semic, other_semic):
         return semic.area() >= other_semic.area()
- 
- 
-#Matrix 
 
-class Matrix:
-    
-    def __init__(matrix, nums: list[list[int, float]]):
-        if not all(len(nums[0]) == len(l) for l in nums):
-            raise Exception("Invalid Matrix formate")
-        
-        matrix.rows = len(nums)
-        matrix.columns = len(nums[0])
-        matrix.shape = (matrix.rows, matrix.columns)
-        matrix.values = nums
-        
-    def __str__(matrix):
-        return str(matrix.values).replace(" ", "").replace("[[", "").replace("],[", "\n").replace(",", " ").replace("]]", "")
-    
-    def __repr__(matrix):
-        return "<Matrix object " + str(matrix.rows) + "x" + str(matrix.columns) +  ">"
-            
-    def __eq__(matrix, B):
-        return matrix.values == B.values
-    
-    def __add__(matrix, B):
-        if matrix.shape != B.shape:
-            raise Excaption("Matrix can't be added of defrent sizes.")
-        C = Matrix([[0]*B.columns for _ in range(B.rows)])
-        for i in range(C.rows):
-            for j in range(C.columns):
-                C.values[i][j] = matrix.values[i][j] + B.values[i][j]
-        return C
-    
-    def __min__(matrix, B):
-        if matrix.shape != B.shape:
-            raise Excaption("Matrix can't be added of defrent sizes.")
-        C = Matrix([[0]*B.columns for _ in range(B.rows)])
-        for i in range(C.rows):
-            for j in range(C.columns):
-                C.values[i][j] = matrix.values[i][j] - B.values[i][j]
-        return C
-    
-    def __mul__(matrix, B):
-        if type(B) == type(0):
-            C = Matrix([[0]*matrix.rows for _ in range(matrix.columns)])
-            for i in range(C.rows):
-                for j in range(C.columns):
-                    C.values[i][j] = matrix.values[i][j] * B
-            return C
-        
-        elif type(B) == type(matrix):
-            if matrix.columns != B.rows:
-                raise Exception("Matrix can't be multipyeid")
-            
-            C = Matrix([[0]*matrix.rows for _ in range(B.columns)])
-            
-            for i in range(matrix.rows):
-               for j in range(B.columns):
-                   for k in range(matrix.rows):
-                       C.values[i][j] += matrix.values[i][k] * B.values[k][j]
-            return C
-        else:
-            raise Exception("Matrix cant be multipyt with, " + str(type(B)))
-    
-    def add(matrix, B):
-        if len(matrix.values[0]) != len(B[0]) or len(matrix.values) != len(B):
-            raise Excaption("Matrix can't be added of defrent sizes.")
-        for i in range(matrix.rows):
-            for j in range(matrix.columns):
-                matrix.values[i][j] = matrix.values[i][j] + B[i][j]
-    
-    def sub(matrix, B):
-        if len(matrix.values[0]) != len(B[0]) or len(matrix.values) != len(B):
-            raise Excaption("Matrix can't be subtracted of defrent sizes.")
-        for i in range(matrix.rows):
-            for j in range(matrix.columns):
-                matrix.values[i][j] = matrix.values[i][j] - B[i][j] 
-    
-    def mul(matrix, B):
-        if type(B) == type(0):
-            C = Matrix([[0]*matrix.rows for _ in range(matrix.columns)])
-            for i in range(C.rows):
-                for j in range(C.columns):
-                    matrix.values[i][j] = matrix.values[i][j] * B
-        elif type(B) == type(Matrix):
-            if matrix.columns != B.rows:
-                raise Exception("Matrix can't be multipyeid")
-            
-            C = Matrix([[0]*matrix.rows for _ in range(B.columns)])
-            
-            for i in range(matrix.rows):
-               for j in range(B.columns):
-                   for k in range(matrix.rows):
-                       C.values[i][j] += matrix.values[i][k] * B.values[k][j]
-            matrix = C
-        else:
-            raise Exception("Matrix cant be multiplied with", str(type(B)))
-    
-    def row(matrix, index: int):
-        if index >= matrix.rows or index < 0: raise ValueErorr("Row index out of range")
-        return matrix.values[index]
-    
-    def column(matrix, index: int):
-        if index >= matrix.columns or index < 0: raise ValueErorr("Column index out of range")
-        return  [r[index] for r in matrix.values]
-    
-    def add_row(matrix, row: list, index=None):
-        if len(row) != matrix.columns:
-            raise Exception("Row must be the size of metrix columns")
-        if not all(type(e) == type(0) or type(e) == type(0.0) for e in row):
-            raise Exception("Matrix elemnts can only be of type int or float")
-        if not index: index = matrix.columns
-        matrix.values.insert(index, row)
-        matrix.rows += 1
-    
-    def add_column(matrix, column: list, index=None):
-        if len(column) != matrix.rows:
-            raise Exception("Columns must be the size of metrix rows")
-        if not all(type(e) == type(0) or type(e) == type(0.0) for e in column):
-            raise Exception("Matrix elemnts can only be of type int or float")
-        if not index: index = matrix.columns
-        for r, e in enumerate(column):
-            matrix.values[r].insert(index, e)
-        matrix.columns += 1
