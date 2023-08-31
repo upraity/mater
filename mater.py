@@ -242,7 +242,7 @@ class Rectangle:
     def __repr__(rect):
         return "<Recctangle lenght=" + str(rect.lenght_) + " width=" + str(rect.width_) + ">"
     
-    def set_lenght(rect, new_lwnght):
+    def set_lenght(rect, new_lenght):
         rect.lenght_ = new_lenght
     
     def set_width(rect, new_width):
