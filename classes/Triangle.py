@@ -1,4 +1,4 @@
-class triangle:
+class Triangle:
     def __init__(tri, base, height):
         tri.base   = base
         tri.height = height
