@@ -1,4 +1,4 @@
-def fiboo(n):
+def fibonacci(n):
     if n < 0:
         print("Incorrect input")
     elif n == 0:
